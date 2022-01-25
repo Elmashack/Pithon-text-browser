@@ -28,11 +28,12 @@ while True:
         if r:
             soup = bs(r.content, 'html.parser')
             tags = soup.find_all(['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'li', 'ol', 'a'])
-            for cln_text in tags:
-                if cln_text.name == 'a':
-                    print(Fore.BLUE + cln_text.text + Fore.RESET)
+            for clean_text in tags:
+                # marking the links
+                if clean_text.name == 'a':
+                    print(Fore.BLUE + clean_text.text + Fore.RESET) 
                 else:
-                    print(cln_text.text)
+                    print(clean_text.text)
             file_name = in_url.rsplit(".", 1)
             with open(f'{arg}/{file_name[0]}', "at", encoding='utf-8') as f:
                 f.write(soup.get_text())
