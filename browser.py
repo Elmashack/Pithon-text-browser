@@ -19,7 +19,7 @@ while True:
         url = "https://" + in_url
     else:
         url = in_url
-        in_url.replace('https://', '', 1)
+        in_url = in_url.replace('https://', '', 1)
     try:
         r = requests.get(url)
     except OSError:
